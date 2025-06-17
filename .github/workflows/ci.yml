@@ -23,6 +23,7 @@ jobs:
         run: |
           npm install -g pnpm
           pnpm install
+        working-directory: ./invest_friends  # <- 여기에 실제 package.json 위치를 지정
 
       - name: Lint the code
         run: pnpm lint
