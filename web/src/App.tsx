@@ -1,36 +1,63 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 
-function App() {
-  const [count, setCount] = useState(0);
+import "./App.css";
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { AppHeader } from "@/components/layouts/app-header";
+import { AppSidebar } from "@/components/layouts/app-sidebar";
+import { AppRight } from "@/components/layouts/app-right";
+import ChatInput from "@/components/chat/chat-input";
+import {
+  ResizablePanelGroup,
+  ResizablePanel,
+  ResizableHandle,
+} from "@/components/ui/resizable";
+import { useCommon } from "@/hooks/useCommon";
+import { CommonProvider } from "@/contexts/common";
+import { AppLeft } from "@/components/layouts/app-left";
+
+function AppContent() {
+  const { sideBarOpen, handleSideBarOpen, canvasMode, handleCanvasMode } =
+    useCommon();
+
+  useEffect(() => {
+    console.log(canvasMode);
+  }, [canvasMode]);
 
   return (
     <>
-      <Button>Click me</Button>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card bg-red-500">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <SidebarProvider open={sideBarOpen} onOpenChange={handleSideBarOpen}>
+        <AppSidebar />
+
+        <SidebarInset>
+          <main className="flex flex-col h-screen w-screen relative">
+            <ResizablePanelGroup direction="horizontal">
+              <ResizablePanel className="relative h-full flex flex-col">
+                <AppHeader />
+                <AppLeft />
+                <div className=""></div>
+              </ResizablePanel>
+              {canvasMode && (
+                <>
+                  <ResizableHandle withHandle />
+                  <ResizablePanel>
+                    <AppHeader />
+                    <AppRight />
+                  </ResizablePanel>
+                </>
+              )}
+            </ResizablePanelGroup>
+          </main>
+        </SidebarInset>
+      </SidebarProvider>
     </>
+  );
+}
+
+function App() {
+  return (
+    <CommonProvider>
+      <AppContent />
+    </CommonProvider>
   );
 }
 
