@@ -7,23 +7,44 @@ on:
     branches: [main, dev]
 
 jobs:
-  # 1. Linting & Testing job
-  lint-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+  # 1. Backend Lint & Test
+  lint-test-backend:
+    uses: ./.github/workflows/lint-and-test.yml
+    with:
+      working-directory: ./backend
+      eslint-command: pnpm exec eslint src --ext .ts
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+  # 2. Frontend Lint & Test
+  lint-test-frontend:
+    uses: ./.github/workflows/lint-and-test.yml
+    with:
+      working-directory: ./frontend
+      eslint-command: pnpm exec eslint src --ext .ts,.tsx
+
+  # 3. Build Backend (after tests)
+  build-backend:
+    runs-on: ubuntu-latest
+<<<<<<< Updated upstream
+=======
+    needs: [lint-test-backend]
+    defaults:
+      run:
+        working-directory: ./backend
+
+>>>>>>> Stashed changes
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install dependencies with pnpm
+      - name: Install dependencies
         run: |
           npm install -g pnpm
           pnpm install
 
+<<<<<<< Updated upstream
       - name: Lint the code
         run: pnpm lint
 
@@ -49,4 +70,30 @@ jobs:
           pnpm install
 
       - name: Build the project
+=======
+      - name: Build backend
+>>>>>>> Stashed changes
+        run: pnpm build
+
+  # 4. Build Frontend (after tests)
+  build-frontend:
+    runs-on: ubuntu-latest
+    needs: [lint-test-frontend]
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          npm install -g pnpm
+          pnpm install
+
+      - name: Build frontend
         run: pnpm build
