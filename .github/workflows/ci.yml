@@ -16,14 +16,14 @@ jobs:
     uses: ./.github/workflows/lint-and-test.yml
     with:
       working-directory: ./backend
-      eslint-command: pnpm exec eslint src --ext .ts
+      eslint-command: pnpm exec tslint src --ext .ts
 
   # 2. Frontend Lint & Test
   lint-test-frontend:
     uses: ./.github/workflows/lint-and-test.yml
     with:
       working-directory: ./frontend
-      eslint-command: pnpm exec eslint src --ext .ts,.tsx
+      eslint-command: pnpm exec tslint src --ext .ts,.tsx
 
   # 3. Build Backend (after tests)
   build-backend:
