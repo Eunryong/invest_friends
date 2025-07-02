@@ -19,17 +19,19 @@ on:
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ${{ inputs.working-directory }}
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
       - name: Install dependencies
+        working-directory: ${{ inputs.working-directory }}
         run: |
           npm install -g pnpm
           pnpm install
+
       - name: Lint and test
+        working-directory: ${{ inputs.working-directory }}
         run: ${{ inputs.eslint-command }}
