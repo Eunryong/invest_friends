@@ -30,7 +30,8 @@ jobs:
         working-directory: ${{ inputs.working-directory }}
         run: |
           npm install -g pnpm
-          pnpm install
+          pnpm install --no-frozen-lockfile
+
 
       - name: Lint and test
         working-directory: ${{ inputs.working-directory }}
