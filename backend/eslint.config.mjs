@@ -13,6 +13,7 @@ export default tseslint.config(
       '@typescript-eslint/explicit-function-return-type': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
       'prettier/prettier': ['error'],
+      'comma-spacing': ['error', { before: false, after: true }],
       'max-len': ['error', { code: 150 }],
       'quotes': ['error', 'single'],
       'no-console': ['warn'],
@@ -40,5 +41,5 @@ export default tseslint.config(
     rules: {
       'prettier/prettier': 'error',
     },
-  }
+  },
 );
