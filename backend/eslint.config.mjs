@@ -13,12 +13,12 @@ export default tseslint.config(
       '@typescript-eslint/explicit-function-return-type': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
       'prettier/prettier': ['error'],
-      commaSpacing: ['error', { before: false, after: true }],
+      'comma-spacing': ['error', { before: false, after: true }],
       'max-len': ['error', { code: 150 }],
-      quotes: ['error', 'single'],
+      'quotes': ['error', 'single'],
       'no-console': ['warn'],
       'no-debugger': ['warn'],
-      semi: ['error', 'always'],
+      'semi': ['error', 'always'],
       '@typescript-eslint/member-ordering': [
         'error',
         {
