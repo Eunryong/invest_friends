@@ -1,0 +1,38 @@
+# .github/workflows/lint-and-test.yml
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Lint and Test
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        description: 'Working directory for the job'
+        required: true
+        type: string
+      eslint-command:
+        description: 'ESLint command to run'
+        required: true
+        type: string
+  workflow_dispatch: {}
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: ${{ inputs.working-directory }}
+        run: |
+          npm install -g pnpm
+          pnpm install --no-frozen-lockfile
+
+
+      - name: Lint and test
+        working-directory: ${{ inputs.working-directory }}
+        run: ${{ inputs.eslint-command }}
