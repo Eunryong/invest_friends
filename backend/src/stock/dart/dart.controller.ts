@@ -1,8 +1,8 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { DartService } from './Dart.service';
-import { SinglIndxRequest } from './dto/SinglIndxRequest.dto';
-import { SinglIndxResponse } from './dto/SinglIndxResponse.dto';
-import { CorpCodeDto } from './dto/CorpCode.dto';
+import { DartService } from './dart.service';
+import { SinglIndxRequest } from './dto/singl-indx-request.dto';
+import { SinglIndxResponse } from './dto/singl-indx-response.dto';
+import { CorpCodeDto } from './dto/corp-code.dto';
 
 @Controller('dart')
 export class DartController {
