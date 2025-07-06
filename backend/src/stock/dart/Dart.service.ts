@@ -19,7 +19,7 @@ export class DartService {
     this.crtfcKey = this.config.get<string>('DART_API_KEY');
   }
 
-  async getCorpCode(): Promise<CorpCodeDto> {
+  async getCorpCode(): Promise<CorpCodeDto[]> {
     const params = {
       crtfc_key: this.crtfcKey,
     };

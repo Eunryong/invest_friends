@@ -9,7 +9,7 @@ export class DartController {
   constructor(private readonly dartService: DartService) {}
 
   @Get('corp-code')
-  async getCorpCode(@Query() query: SinglIndxRequest): Promise<CorpCodeDto> {
+  async getCorpCode(@Query() query: SinglIndxRequest): Promise<CorpCodeDto[]> {
     return this.dartService.getCorpCode();
   }
 
