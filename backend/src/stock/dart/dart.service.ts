@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
-import { SinglIndxRequest } from './dto/singl-indx-request.dto';
-import { SinglIndxResponse } from './dto/singl-indx-response.dto';
+import { SinglIndxRequest, SinglIndxResponse } from './dto/singl-indx.dto';
 import * as AdmZip from 'adm-zip';
 import { XMLParser } from 'fast-xml-parser';
 import { firstValueFrom } from 'rxjs';

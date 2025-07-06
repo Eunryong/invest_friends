@@ -1,7 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { DartService } from './dart.service';
-import { SinglIndxRequest } from './dto/singl-indx-request.dto';
-import { SinglIndxResponse } from './dto/singl-indx-response.dto';
+import { SinglIndxRequest, SinglIndxResponse } from './dto/singl-indx.dto';
 import { CorpCodeDto } from './dto/corp-code.dto';
 
 @Controller('dart')
@@ -9,7 +8,7 @@ export class DartController {
   constructor(private readonly dartService: DartService) {}
 
   @Get('corp-code')
-  async getCorpCode(@Query() query: SinglIndxRequest): Promise<CorpCodeDto[]> {
+  async getCorpCode(): Promise<CorpCodeDto[]> {
     return this.dartService.getCorpCode();
   }
 
