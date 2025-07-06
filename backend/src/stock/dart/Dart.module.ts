@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios';
-import { DartController } from './DartController';
-import { DartService } from './DartService';
+import { DartController } from './Dart,controller';
+import { DartService } from './Dart.service';
 
 @Module({
   imports: [HttpModule],

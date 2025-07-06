@@ -1,5 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { DartService } from './DartService';
+import { DartService } from './Dart.service';
 import { SinglIndxRequest } from './dto/SinglIndxRequest.dto';
 import { SinglIndxResponse } from './dto/SinglIndxResponse.dto';
 import { CorpCodeDto } from './dto/CorpCode.dto';
