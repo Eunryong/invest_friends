@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
-import { SinglIndxRequest } from './dto/singl-indx-request.dto';
-import { SinglIndxResponse } from './dto/singl-indx-response.dto';
+import { SinglIndxRequest } from './dto/SinglIndxRequest.dto';
+import { SinglIndxResponse } from './dto/SinglIndxResponse.dto';
 import * as AdmZip from 'adm-zip';
 import { XMLParser } from 'fast-xml-parser';
 import { firstValueFrom } from 'rxjs';
-import { CorpCodeDto } from './dto/corp-code.dto';
+import { CorpCodeDto } from './dto/CorpCode.dto';
 
 @Injectable()
 export class DartService {
