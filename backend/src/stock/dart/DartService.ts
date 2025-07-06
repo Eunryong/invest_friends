@@ -59,6 +59,6 @@ export class DartService {
       ),
     );
 
-    return await data;
+    return data;
   }
 }
