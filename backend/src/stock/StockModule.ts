@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { DartModule } from './dart/dart.module';
+import { DartModule } from './dart/DartModule';
 
 @Module({
   imports: [
