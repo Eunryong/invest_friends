@@ -5,7 +5,8 @@ import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppHeader } from "@/components/layouts/app-header";
 import { AppSidebar } from "@/components/layouts/app-sidebar";
 import { AppRight } from "@/components/layouts/app-right";
-import ChatInput from "@/components/chat/chat-input";
+import { Toaster } from "sonner";
+
 import {
   ResizablePanelGroup,
   ResizablePanel,
@@ -16,8 +17,7 @@ import { CommonProvider } from "@/contexts/common";
 import { AppLeft } from "@/components/layouts/app-left";
 
 function AppContent() {
-  const { sideBarOpen, handleSideBarOpen, canvasMode, handleCanvasMode } =
-    useCommon();
+  const { sideBarOpen, handleSideBarOpen, canvasMode } = useCommon();
 
   useEffect(() => {
     console.log(canvasMode);
@@ -25,6 +25,7 @@ function AppContent() {
 
   return (
     <>
+      <Toaster position="top-center" />
       <SidebarProvider open={sideBarOpen} onOpenChange={handleSideBarOpen}>
         <AppSidebar />
 
