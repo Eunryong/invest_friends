@@ -11,8 +11,16 @@ import {
   ChevronDown,
 } from "lucide-react";
 
+type Message = {
+  id: number;
+  type: "ai" | "user";
+  content: string;
+  timestamp: Date;
+  isTyping: boolean;
+};
+
 const ChatArea = () => {
-  const [messages] = useState([
+  const [messages] = useState<Message[]>([
     {
       id: 1,
       type: "ai",
@@ -130,7 +138,7 @@ const ChatArea = () => {
     message,
     showActions = true,
   }: {
-    message: any;
+    message: Message;
     showActions: boolean;
   }) => {
     const isUser = message.type === "user";
