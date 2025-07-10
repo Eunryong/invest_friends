@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { api } from "@/services/axios";
 import type { ApiResponse, ApiError, RequestState } from "@/services/type";
+import type { AxiosRequestConfig } from "axios";
 
 export function useApi<T>() {
   const [state, setState] = useState<RequestState<T>>({
@@ -14,7 +15,7 @@ export function useApi<T>() {
       method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH",
       url: string,
       data?: unknown,
-      config?: Record<string, unknown>
+      config?: AxiosRequestConfig
     ) => {
       setState((prev) => ({ ...prev, loading: true, error: null }));
 
@@ -36,7 +37,7 @@ export function useApi<T>() {
       } catch (error) {
         const apiError = error as { response?: { data: ApiError } };
         const errorMessage =
-          apiError.response?.data?.message || "테테테스스스스스";
+          apiError.response?.data?.message || "알 수 없는 오류가 발생했습니다.";
 
         setState({
           data: null,
