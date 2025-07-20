@@ -1,10 +1,7 @@
 pipeline {
     agent any
-    environment {
-        NODE_VERSION = '24.4.1'
-    }
     tools {
-        nodejs "${NODE_VERSION}"
+        nodejs-24
     }
     stages {
         stage('Clone') {
