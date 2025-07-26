@@ -4,6 +4,11 @@ pipeline {
         nodejs "nodejs-24"
     }
     stages {
+        stage('Install pnpm') {
+            steps {
+                sh 'npm install -g pnpm'
+            }
+        }
         stage('Clone') {
             steps {
                 checkout scm
